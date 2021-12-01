@@ -29,15 +29,13 @@ def parse_data(raw: str) -> List[int]:
 
 
 def main():
-    test = [int(i) for i in RAW.split('\n')]
-
     raw = read_data("day1.txt")
     data = parse_data(raw)
     solution_part1: int = solve_part1(data)
     solution_part2: int = solve_part2(data)
 
-    print(f"Day1 - part1: {solution_part1}")
-    print(f"Day1 - part2: {solution_part2}")
+    print(f"Day 1 - part 1: {solution_part1}")
+    print(f"Day 1 - part 2: {solution_part2}")
 
 
 if __name__ == '__main__':
