@@ -35,4 +35,3 @@ RAW = """199
 260
 263"""
 
-test = [int(i) for i in RAW.split('\n')]
