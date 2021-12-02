@@ -46,10 +46,6 @@ class Submarine2(Submarine):
             self.forward += cmd.units
             self.depth = self.depth + self.aim * cmd.units
 
-    def execute_commands(self, cmds: List[Command]):
-        for cmd in cmds:
-            self.move(cmd)
-
 
 def solve_part1(data: List[Command]) -> int:
     sub = Submarine()
