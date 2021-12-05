@@ -7,6 +7,11 @@ from collections import Counter
 from src.file_utils import read_data
 
 
+def parse_position(pos: str) -> Tuple[int, int]:
+    x, y = pos.split(',')
+    return int(x), int(y)
+
+
 def parse_vents(vents: str, diag_lines: bool = False):
     start, end = re.split(r'\W+\->\W+', vents)
     x1, y1 = parse_position(start)
@@ -43,19 +48,10 @@ class Map:
     @staticmethod
     def parse(raw: str, diag: bool = False):
         positions = []
-        for l in parse(raw):
+        for l in [p for p in raw.split('\n')]:
             for position in parse_vents(l, diag):
                 positions.append(position)
         return Map([Position(p[0], p[1], c) for p, c in Counter(positions).items()])
-
-
-def parse_position(pos: str) -> Tuple[int, int]:
-    x, y = pos.split(',')
-    return int(x), int(y)
-
-
-def parse(raw: str) -> List[str]:
-    return [p for p in raw.split('\n')]
 
 
 def solve_part1(raw: str):
